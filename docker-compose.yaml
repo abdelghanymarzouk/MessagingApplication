@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+  myapp:
+    image: 'messaging-service:latest'
+    build:
+        context: ./
+    container_name: myapp
+    ports:
+        - "8080:8080"
+    depends_on:
+      - db
+      - kafka
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/messaging-service
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - KAFKA_BOOTSTRAP_SERVER=kafka:9092
+
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=tracking-devices
+  zookeeper:
+    image: wurstmeister/zookeeper
+    expose:
+      - "2181:2181"
+  kafka:
+    image: 'wurstmeister/kafka'
+    depends_on:
+      - zookeeper
+    ports:
+      - "29092:29092"
+    environment:
+      - KAFKA_BROKER_ID: 1
+      - KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      - KAFKA_ADVERTISED_HOST_NAME: kafka
