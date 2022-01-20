@@ -1,4 +1,4 @@
-package com.Visable.messagingservice;
+package com.visable.messagingservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
