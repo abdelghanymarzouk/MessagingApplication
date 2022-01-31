@@ -16,7 +16,7 @@ services:
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=root
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      - KAFKA_BOOTSTRAP_SERVER=kafka:29092
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:9092
 
   postgresdb:
     image: 'postgres:13.1-alpine'
