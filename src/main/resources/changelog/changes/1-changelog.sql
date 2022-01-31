@@ -1,4 +1,7 @@
-	CREATE USER postgres;
+--liquibase formatted sql
+--changeset abdelghany:create user and database
+
+CREATE USER postgres;
 CREATE DATABASE messaging-service
     WITH
     OWNER = postgres

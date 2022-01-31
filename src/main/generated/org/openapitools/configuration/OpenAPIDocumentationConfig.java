@@ -38,7 +38,7 @@ public class OpenAPIDocumentationConfig {
     public Docket customImplementation(ServletContext servletContext, @Value("${openapi.messsagingService.base-path:/api/messaging-service}") String basePath) {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                    .apis(RequestHandlerSelectors.basePackage("com.visable.messagingService.controller"))
+                    .apis(RequestHandlerSelectors.basePackage("com.visable.messagingservice.controller"))
                     .build()
                 .pathProvider(new BasePathAwareRelativePathProvider(servletContext, basePath))
                 .directModelSubstitute(java.time.LocalDate.class, java.sql.Date.class)

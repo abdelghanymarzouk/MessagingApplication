@@ -1,6 +1,6 @@
 package com.visable.messagingservice.domain.exception;
 
-import com.visable.messagingService.model.ProblemDto;
+import com.visable.messagingservice.model.ProblemDto;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.HttpStatus;

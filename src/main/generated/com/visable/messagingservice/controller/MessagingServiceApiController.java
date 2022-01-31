@@ -1,4 +1,4 @@
-package com.visable.messagingService.controller;
+package com.visable.messagingservice.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

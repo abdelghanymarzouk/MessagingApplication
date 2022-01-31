@@ -1,19 +1,15 @@
-package com.visable.messagingService.controller;
+package com.visable.messagingservice.controller;
 
-import com.visable.messagingService.model.MessageDto;
-import com.visable.messagingService.model.MessagesDto;
-import com.visable.messagingService.model.ProblemDto;
+import com.visable.messagingservice.model.MessageDto;
+import com.visable.messagingservice.model.MessagesDto;
+
 import java.util.UUID;
-import com.visable.messagingService.model.UserDto;
-import io.swagger.annotations.*;
+import com.visable.messagingservice.model.UserDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.context.request.NativeWebRequest;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 /**

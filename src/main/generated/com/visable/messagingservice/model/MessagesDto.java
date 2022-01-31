@@ -1,10 +1,10 @@
-package com.visable.messagingService.model;
+package com.visable.messagingservice.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.visable.messagingService.model.MessageDto;
-import com.visable.messagingService.model.PaginationDto;
+import com.visable.messagingservice.model.MessageDto;
+import com.visable.messagingservice.model.PaginationDto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;

@@ -1,9 +1,7 @@
 package com.visable.messagingservice.domain.mapper;
 
 
-import com.visable.messagingService.model.MessageDto;
-import com.visable.messagingService.model.UserDto;
-import com.visable.messagingservice.domain.model.MessageEntity;
+import com.visable.messagingservice.model.UserDto;
 import com.visable.messagingservice.domain.model.UserEntity;
 
 public class UserMapper {

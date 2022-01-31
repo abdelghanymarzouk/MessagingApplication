@@ -1,4 +1,4 @@
-package com.visable.messagingService;
+package com.visable.messagingservice;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.ExitCodeGenerator;
@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.visable.messagingService", "com.visable.messagingService.controller" , "org.openapitools.configuration"})
+@ComponentScan(basePackages = {"com.visable.messagingservice", "com.visable.messagingservice.controller" , "org.openapitools.configuration"})
 public class OpenAPI2SpringBoot implements CommandLineRunner {
 
     @Override

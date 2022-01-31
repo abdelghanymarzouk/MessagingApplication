@@ -15,7 +15,7 @@ import static com.visable.messagingservice.domain.util.Constants.TOPIC_NAME;
 @Configuration
 public class KafkaTopicConfig {
 
-    @Value(value = "${kafka.bootstrapAddress}")
+    @Value(value = "${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
 
     @Bean

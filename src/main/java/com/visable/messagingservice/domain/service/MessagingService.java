@@ -1,9 +1,9 @@
 package com.visable.messagingservice.domain.service;
 
-import com.visable.messagingService.model.MessageDto;
-import com.visable.messagingService.model.MessagesDto;
-import com.visable.messagingService.model.PaginationDto;
-import com.visable.messagingService.model.UserDto;
+import com.visable.messagingservice.model.MessageDto;
+import com.visable.messagingservice.model.MessagesDto;
+import com.visable.messagingservice.model.PaginationDto;
+import com.visable.messagingservice.model.UserDto;
 import com.visable.messagingservice.domain.exception.MessagingServiceException;
 import com.visable.messagingservice.domain.mapper.MessageMapper;
 import com.visable.messagingservice.domain.mapper.UserMapper;
@@ -21,7 +21,6 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

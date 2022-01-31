@@ -1,16 +1,14 @@
-package com.visable.messagingService.model;
+package com.visable.messagingservice.model;
 
-import java.time.LocalDateTime;
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.time.OffsetDateTime;
-import java.util.UUID;
-import java.io.Serializable;
+
 import javax.validation.Valid;
-import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.Objects;
+import java.util.UUID;
 
 /**
  * Message 

@@ -1,4 +1,4 @@
-package com.visable.messagingService.model;
+package com.visable.messagingservice.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;

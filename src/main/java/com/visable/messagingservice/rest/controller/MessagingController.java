@@ -1,9 +1,9 @@
 package com.visable.messagingservice.rest.controller;
 
-import com.visable.messagingService.controller.MessagingServiceApiDelegate;
-import com.visable.messagingService.model.MessageDto;
-import com.visable.messagingService.model.MessagesDto;
-import com.visable.messagingService.model.UserDto;
+import com.visable.messagingservice.controller.MessagingServiceApiDelegate;
+import com.visable.messagingservice.model.MessageDto;
+import com.visable.messagingservice.model.MessagesDto;
+import com.visable.messagingservice.model.UserDto;
 import com.visable.messagingservice.domain.service.MessagingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

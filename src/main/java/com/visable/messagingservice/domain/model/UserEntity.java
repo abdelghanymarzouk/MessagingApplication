@@ -11,7 +11,7 @@ import java.util.UUID;
 @Getter
 @Setter
 
-@Entity(name = "Users")
+@Entity(name = "users")
 public class UserEntity {
 
     @Id
@@ -22,9 +22,9 @@ public class UserEntity {
     @Column(name = "nick_name",nullable = false)
     private String nickName;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "receiver")
-    private List<MessageEntity> sentMessages;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "sender")
-    private List<MessageEntity> receivedMessages;
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "receiver")
+//    private List<MessageEntity> sentMessages;
+//
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "sender")
+//    private List<MessageEntity> receivedMessages;
 }
