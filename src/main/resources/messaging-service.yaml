@@ -46,7 +46,14 @@ paths:
               $ref: "#/components/schemas/User"
       responses:
         default:
-          description: "successful operation"
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  userId:
+                    type: string
+                    format: uuid
 
   /sendMessage:
     post:

@@ -51,13 +51,14 @@ public class MessagingService {
         kafkaTemplate.send(TOPIC_NAME,messageDto);
     }
 
-    public void createUser(UserDto userDto) {
+    public UUID createUser(UserDto userDto) {
         Optional<UserEntity> userEntityOptional = userRepository.findByNickName(userDto.getNickName());
         if(userEntityOptional.isPresent()){
             throw new MessagingServiceException(HttpStatus.BAD_REQUEST, "Nick Name already exist");
         }
         UserEntity userEntity = UserMapper.dtoToEntity(userDto);
-        userRepository.save(userEntity);
+        UserEntity user = userRepository.save(userEntity);
+        return user.getUserId();
     }
 
     public MessagesDto getReceivedMessages(UUID userId, Integer pageNumber, Integer pageSize) {

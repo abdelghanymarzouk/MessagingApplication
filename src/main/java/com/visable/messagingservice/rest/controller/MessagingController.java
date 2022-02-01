@@ -20,9 +20,9 @@ public class MessagingController implements MessagingServiceApiDelegate {
     MessagingService messagingService;
 
     @Override
-    public ResponseEntity<Void> createUser(UserDto userDto) {
-        messagingService.createUser(userDto);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<Object> createUser(UserDto userDto) {
+        UUID userId = messagingService.createUser(userDto);
+        return new ResponseEntity<>(userId,HttpStatus.CREATED);
     }
 
     @Override

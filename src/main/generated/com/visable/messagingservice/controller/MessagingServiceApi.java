@@ -19,9 +19,13 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import java.util.List;
+import java.util.Map;
 
 @Validated
 @Api(value = "MessagingService", description = "the MessagingService API")
@@ -31,13 +35,14 @@ public interface MessagingServiceApi {
         return new MessagingServiceApiDelegate() {};
     }
 
-    @ApiOperation(value = "Create user", nickname = "createUser", notes = "Create new User", tags={ "Messaging Service", })
+    @ApiOperation(value = "Create user", nickname = "createUser", notes = "Create new User", response = Object.class, tags={ "Messaging Service", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "successful operation") })
+        @ApiResponse(code = 200, message = "Success", response = Object.class) })
     @RequestMapping(value = "/user",
+        produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    default ResponseEntity<Void> createUser(@ApiParam(value = "User object that needs to be added."  )  @Valid @RequestBody UserDto userDto) {
+    default ResponseEntity<Object> createUser(@ApiParam(value = "User object that needs to be added."  )  @Valid @RequestBody UserDto userDto) {
         return getDelegate().createUser(userDto);
     }
 

@@ -2,14 +2,18 @@ package com.visable.messagingservice.controller;
 
 import com.visable.messagingservice.model.MessageDto;
 import com.visable.messagingservice.model.MessagesDto;
-
+import com.visable.messagingservice.model.ProblemDto;
 import java.util.UUID;
 import com.visable.messagingservice.model.UserDto;
+import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.context.request.NativeWebRequest;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -26,7 +30,7 @@ public interface MessagingServiceApiDelegate {
     /**
      * @see MessagingServiceApi#createUser
      */
-    default ResponseEntity<Void> createUser(UserDto userDto) {
+    default ResponseEntity<Object> createUser(UserDto userDto) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
