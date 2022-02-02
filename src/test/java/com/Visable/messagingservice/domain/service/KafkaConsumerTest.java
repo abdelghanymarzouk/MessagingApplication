@@ -2,18 +2,14 @@ package com.Visable.messagingservice.domain.service;
 
 
 import com.Visable.messagingservice.configuration.Configuration;
-import com.visable.messagingservice.MessagingServiceApplication;
 import com.visable.messagingservice.domain.model.MessageEntity;
 import com.visable.messagingservice.domain.repository.MessagingRepository;
 import com.visable.messagingservice.domain.service.KafkaConsumer;
 import com.visable.messagingservice.model.MessageDto;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
