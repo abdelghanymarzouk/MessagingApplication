@@ -9,12 +9,6 @@ public class UserMapper {
     private UserMapper() {
     }
 
-    public static UserDto entityToDto(UserEntity userEntity) {
-        UserDto userDto = new UserDto();
-        userDto.setNickName(userEntity.getNickName());
-        return userDto;
-    }
-
     public static UserEntity dtoToEntity(UserDto userDto) {
         UserEntity userEntity = new UserEntity();
         userEntity.setNickName(userDto.getNickName());

@@ -18,7 +18,7 @@ public class MessagingExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(MessagingServiceException.class)
     public ResponseEntity<Object> handleException(MessagingServiceException exception) {
 
-        log.warn("Tracking Device service Exception with cause : {}", exception.getErrorMessage());
+        log.warn("Messaging service Exception with cause : {}", exception.getErrorMessage());
         ProblemDto problem = new ProblemDto();
         problem.setStatus(exception.getStatusCode().value());
         problem.setInstance(exception.getStatusCode().getReasonPhrase());
