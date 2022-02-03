@@ -43,7 +43,7 @@ public class MessagingService {
     KafkaTemplate<String, MessageDto> kafkaTemplate;
 
     public void sendMessage(UUID userId, MessageDto messageDto) {
-        if(userId == messageDto.getSentTo()){
+        if(userId.equals(messageDto.getSentTo())){
             throw new MessagingServiceException(HttpStatus.BAD_REQUEST, "You cannot send a message to yourself");
         }
         messageDto.setSentBy(userId);
@@ -74,7 +74,7 @@ public class MessagingService {
 
     public MessagesDto getReceivedMessagesFromParticularUser(UUID currentUserId, UUID userIdToSearchWith, Integer pageNumber, Integer pageSize) {
         validatePageNumberAndPageSize(pageNumber, pageSize);
-        if(currentUserId == userIdToSearchWith){
+        if(currentUserId.equals(userIdToSearchWith)){
             throw new MessagingServiceException(HttpStatus.BAD_REQUEST, "User Id you used to search with cannot be your user id");
         }
         Specification<MessageEntity> sendTo =

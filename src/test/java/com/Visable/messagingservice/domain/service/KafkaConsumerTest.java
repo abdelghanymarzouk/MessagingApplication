@@ -54,7 +54,7 @@ class KafkaConsumerTest extends BasePostgresqlContainer{
         messageDto.setSentTo(UUID.randomUUID());
         doReturn(new MessageEntity()).when(messagingRepository).save(any());
         template.send(TOPIC_NAME, messageDto);
-        consumer.getLatch().await(10000, TimeUnit.MILLISECONDS);
+        consumer.getLatch().await(5000, TimeUnit.MILLISECONDS);
         assertThat(consumer.getLatch().getCount(), equalTo(0L));
         assertThat(consumer.getPayload(), containsString("hello world"));
     }
