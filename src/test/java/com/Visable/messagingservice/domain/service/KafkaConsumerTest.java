@@ -1,15 +1,19 @@
 package com.Visable.messagingservice.domain.service;
 
 
-import com.Visable.messagingservice.configuration.Configuration;
+import com.visable.messagingservice.MessagingServiceApplication;
 import com.visable.messagingservice.domain.model.MessageEntity;
 import com.visable.messagingservice.domain.repository.MessagingRepository;
 import com.visable.messagingservice.domain.service.KafkaConsumer;
 import com.visable.messagingservice.model.MessageDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.test.context.EmbeddedKafka;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -22,8 +26,12 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
 
 
-//@EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
-class KafkaConsumerTest extends Configuration {
+
+@SpringBootTest(classes = { MessagingServiceApplication.class })
+@DirtiesContext
+@EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
+@ActiveProfiles(value = "test")
+class KafkaConsumerTest {
 
 
     @Autowired

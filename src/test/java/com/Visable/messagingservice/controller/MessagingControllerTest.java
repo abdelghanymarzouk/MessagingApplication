@@ -1,5 +1,6 @@
 package com.Visable.messagingservice.controller;
 
+import com.Visable.messagingservice.configuration.BasePostgresqlContainer;
 import com.visable.messagingservice.MessagingServiceApplication;
 import com.visable.messagingservice.domain.exception.MessagingServiceException;
 import com.visable.messagingservice.domain.service.MessagingService;
@@ -7,15 +8,20 @@ import com.visable.messagingservice.model.MessageDto;
 import com.visable.messagingservice.model.MessagesDto;
 import com.visable.messagingservice.model.PaginationDto;
 import com.visable.messagingservice.model.UserDto;
+import org.junit.ClassRule;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.kafka.test.context.EmbeddedKafka;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
+import org.testcontainers.containers.PostgreSQLContainer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +42,13 @@ import static org.springframework.http.HttpStatus.*;
 @RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
 @SpringBootTest(classes = { MessagingServiceApplication.class })
+@ActiveProfiles(value = "test")
+@DirtiesContext
+@EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
 class MessagingControllerTest {
+
+    @ClassRule
+    public static PostgreSQLContainer postgreSQLContainer = BasePostgresqlContainer.getInstance();
 
     private static final String GET_SENT_MESSAGES_ENDPOINT = "/api/messaging-service/getSentMessages";
     private static final String GET_RECEIVED_MESSAGES_ENDPOINT = "/api/messaging-service/getReceivedMessages";
