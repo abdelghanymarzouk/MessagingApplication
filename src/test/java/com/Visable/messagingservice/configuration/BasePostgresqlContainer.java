@@ -13,7 +13,10 @@ public class BasePostgresqlContainer extends PostgreSQLContainer<BasePostgresqlC
 
     public static BasePostgresqlContainer getInstance() {
         if (container == null) {
-            container = new BasePostgresqlContainer();
+            container = new BasePostgresqlContainer()
+                    .withDatabaseName("messaging-service")
+                    .withUsername("postgres")
+                    .withPassword("root");
         }
         return container;
     }

@@ -1,11 +1,13 @@
 package com.Visable.messagingservice.domain.service;
 
 
+import com.Visable.messagingservice.configuration.BasePostgresqlContainer;
 import com.visable.messagingservice.MessagingServiceApplication;
 import com.visable.messagingservice.domain.model.MessageEntity;
 import com.visable.messagingservice.domain.repository.MessagingRepository;
 import com.visable.messagingservice.domain.service.KafkaConsumer;
 import com.visable.messagingservice.model.MessageDto;
+import org.junit.ClassRule;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,6 +16,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
+import org.testcontainers.containers.PostgreSQLContainer;
 
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -33,6 +36,8 @@ import static org.mockito.Mockito.doReturn;
 @ActiveProfiles(value = "test")
 class KafkaConsumerTest {
 
+    @ClassRule
+    public static PostgreSQLContainer postgreSQLContainer = BasePostgresqlContainer.getInstance();
 
     @Autowired
     private KafkaConsumer consumer;
