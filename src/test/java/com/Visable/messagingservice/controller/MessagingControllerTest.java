@@ -45,10 +45,8 @@ import static org.springframework.http.HttpStatus.*;
 @ActiveProfiles(value = "test")
 @DirtiesContext
 @EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
-class MessagingControllerTest {
+class MessagingControllerTest extends BasePostgresqlContainer{
 
-    @ClassRule
-    public static PostgreSQLContainer postgreSQLContainer = BasePostgresqlContainer.getInstance();
 
     private static final String GET_SENT_MESSAGES_ENDPOINT = "/api/messaging-service/getSentMessages";
     private static final String GET_RECEIVED_MESSAGES_ENDPOINT = "/api/messaging-service/getReceivedMessages";

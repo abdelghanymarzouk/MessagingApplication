@@ -1,36 +1,28 @@
 package com.Visable.messagingservice.configuration;
 
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.utility.DockerImageName;
 
-public class BasePostgresqlContainer extends PostgreSQLContainer<BasePostgresqlContainer> {
+/**
+ * @author Abdelghany
+ */
+public class BasePostgresqlContainer {
+    private static final String POSTGRES_VERSION = "postgres:13.1-alpine";
 
-    private static final String IMAGE_VERSION = "postgres:11.1";
-    private static BasePostgresqlContainer container;
+    public static final PostgreSQLContainer<?> postgreSQLContainer =
+            new PostgreSQLContainer<>(DockerImageName.parse(POSTGRES_VERSION))
+                    .withDatabaseName("messaging-service");
 
-    private BasePostgresqlContainer() {
-        super(IMAGE_VERSION);
+    @DynamicPropertySource
+    static void testProperties(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", postgreSQLContainer::getJdbcUrl);
+        registry.add("spring.datasource.password", postgreSQLContainer::getPassword);
+        registry.add("spring.datasource.username", postgreSQLContainer::getUsername);
     }
 
-    public static BasePostgresqlContainer getInstance() {
-        if (container == null) {
-            container = new BasePostgresqlContainer()
-                    .withDatabaseName("messaging-service")
-                    .withUsername("postgres")
-                    .withPassword("root");
-        }
-        return container;
-    }
-
-    @Override
-    public void start() {
-        super.start();
-        System.setProperty("DB_URL", container.getJdbcUrl());
-        System.setProperty("DB_USERNAME", container.getUsername());
-        System.setProperty("DB_PASSWORD", container.getPassword());
-    }
-
-    @Override
-    public void stop() {
-        //do nothing, JVM handles shut down
+    static {
+        postgreSQLContainer.start();
     }
 }

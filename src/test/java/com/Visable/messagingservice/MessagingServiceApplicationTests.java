@@ -14,10 +14,7 @@ import org.testcontainers.containers.PostgreSQLContainer;
 @ActiveProfiles(value = "test")
 @DirtiesContext
 @EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
-class MessagingServiceApplicationTests {
-
-	@ClassRule
-	public static PostgreSQLContainer postgreSQLContainer = BasePostgresqlContainer.getInstance();
+class MessagingServiceApplicationTests extends BasePostgresqlContainer{
 
 	@Test
 	void contextLoads() {

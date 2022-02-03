@@ -34,10 +34,8 @@ import static org.mockito.Mockito.doReturn;
 @DirtiesContext
 @EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
 @ActiveProfiles(value = "test")
-class KafkaConsumerTest {
+class KafkaConsumerTest extends BasePostgresqlContainer{
 
-    @ClassRule
-    public static PostgreSQLContainer postgreSQLContainer = BasePostgresqlContainer.getInstance();
 
     @Autowired
     private KafkaConsumer consumer;
